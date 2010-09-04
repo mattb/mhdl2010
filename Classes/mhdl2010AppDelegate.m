@@ -48,6 +48,8 @@
 	// attach the openglView to the director
 	[director setOpenGLView:glView];
 	
+	[glView setMultipleTouchEnabled:YES];
+	
 	// To enable Hi-Red mode (iPhone4)
 	//	[director setContentScaleFactor:2];
 	

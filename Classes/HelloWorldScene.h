@@ -13,11 +13,12 @@
 // HelloWorld Layer
 @interface HelloWorld : CCLayer
 {
-	CCParticleSystem *emitter;
 	NSMutableArray	*emitters;
+	NSMutableArray *activeEmitters;
 }
 
 // returns a Scene that contains the HelloWorld as the only child
 +(id) scene;
+-(CCParticleSystem *)nearestEmitterTo:(CGPoint)location from:(NSArray *)collection;
 
 @end

@@ -35,10 +35,15 @@
 	if( (self=[super init] )) {
 		self.isTouchEnabled = YES;
 		
-		for(int i = 0; i<10; i++) {
-			[emitters addObject:[CCParticleFireworks node]];
+		emitters = [[NSMutableArray arrayWithCapacity:0] retain];
+		activeEmitters = [[NSMutableArray arrayWithCapacity:10] retain];
+		
+		for(int i = 0; i<100; i++) {
+			[emitters addObject:[[CCParticleFireworks node] retain]];
 		}
-		for(emitter in emitters) {
+
+		for(CCParticleSystem *emitter in emitters) {
+			[emitter stopSystem];
 			[self addChild: emitter];
 		}
 	}
@@ -46,24 +51,49 @@
 }
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-	[emitter resetSystem];
-	UITouch *touch = [touches anyObject];
-	
-	CGPoint location = [[CCDirector sharedDirector] 
+	for(UITouch *touch in touches) {
+		CGPoint location = [[CCDirector sharedDirector] 
 						convertToGL: [touch locationInView:touch.view]];
-	emitter.position = location;
+	
+		CCParticleSystem *emitter = [self nearestEmitterTo:location from:emitters];
+		[emitter resetSystem];
+		[activeEmitters addObject:emitter];
+		emitter.position = location;
+	}
+	NSLog(@"Active emitters: %d", [activeEmitters count]);
 }
 
 - (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    UITouch *touch = [touches anyObject];
-	
-	CGPoint location = [[CCDirector sharedDirector] 
-						convertToGL: [touch locationInView:touch.view]];
-	emitter.position = location;
+	if([activeEmitters count] > 0) {
+		for(UITouch *touch in touches) {
+			CGPoint location = [[CCDirector sharedDirector] 
+								convertToGL: [touch locationInView:touch.view]];
+			
+			CCParticleSystem *emitter = [self nearestEmitterTo:location from:activeEmitters];
+			emitter.position = location;
+		}
+	}
 }
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-	[emitter stopSystem];
+	for(CCParticleSystem *emitter in activeEmitters) {
+		[emitter stopSystem];
+	}
+	[activeEmitters removeAllObjects];
+}
+
+- (CCParticleSystem *)nearestEmitterTo:(CGPoint)location from:(NSArray *)collection {
+	CCParticleSystem *choice = [collection objectAtIndex:0];
+	for(CCParticleSystem *emitter in collection) {
+		int dcx = choice.position.x - location.x;
+		int dcy = choice.position.y - location.y;
+		int dex = emitter.position.x - location.x;
+		int dey = emitter.position.y - location.y;
+		if((dcx*dcx + dcy*dcy) > (dex*dex + dey*dey)) {
+		   choice = emitter;
+		}
+	}
+	return choice;
 }
 
 // on "dealloc" you need to release all your retained objects
