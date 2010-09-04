@@ -13,13 +13,14 @@
 -(id) init
 {
 	id t = [self initWithTotalParticles:20];
-	startColor.r = ((float)arc4random()) / RAND_MAX / 3;
-	startColor.g = ((float)arc4random()) / RAND_MAX / 3;
-	startColor.b = ((float)arc4random()) / RAND_MAX / 3;
+	startColor.r = ((float)arc4random()) / RAND_MAX / 8;
+	startColor.g = ((float)arc4random()) / RAND_MAX / 8;
+	startColor.b = ((float)arc4random()) / RAND_MAX / 8;
 	startSize = 10.0 + (arc4random() % 30);
+	float d = 60.0 / (30 * (1 + arc4random() % 4));
 	[self runAction:[CCRepeatForever actionWithAction:
 					 [CCSequence actions: 
-					   [CCScaleTo actionWithDuration:0.5f-0.01f scale:1.5f], 
+					   [CCScaleTo actionWithDuration:d-0.01f scale:1.5f], 
 					   [CCScaleTo actionWithDuration:0.01f scale:1.0f],
 					   nil]]];
 	return t;
