@@ -70,6 +70,13 @@
 		D95F2A741232D04800B90FFC /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D95F2A6D1232D04800B90FFC /* SBJsonBase.m */; };
 		D95F2A751232D04800B90FFC /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D95F2A6F1232D04800B90FFC /* SBJsonParser.m */; };
 		D95F2A761232D04800B90FFC /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = D95F2A711232D04800B90FFC /* SBJsonWriter.m */; };
+		D95F2B571232D30800B90FFC /* GDataHTTPFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D95F2B561232D30800B90FFC /* GDataHTTPFetcher.m */; };
+		D95F2B6F1232D36600B90FFC /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D95F2B6E1232D36600B90FFC /* GDataXMLNode.m */; };
+		D95F2B7C1232D39C00B90FFC /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D95F2B7B1232D39C00B90FFC /* libxml2.dylib */; };
+		D95F2B9B1232D41A00B90FFC /* GDataHTTPFetcherLogging.m in Sources */ = {isa = PBXBuildFile; fileRef = D95F2B9A1232D41A00B90FFC /* GDataHTTPFetcherLogging.m */; };
+		D95F2BA51232D42E00B90FFC /* GDataMIMEDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = D95F2BA21232D42E00B90FFC /* GDataMIMEDocument.m */; };
+		D95F2BA61232D42E00B90FFC /* GDataProgressMonitorInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = D95F2BA41232D42E00B90FFC /* GDataProgressMonitorInputStream.m */; };
+		D95F2BAE1232D43A00B90FFC /* GDataGatherInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = D95F2BAD1232D43A00B90FFC /* GDataGatherInputStream.m */; };
 		DC6640030F83B3EA000B3E49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */; };
 		DC6640050F83B3EA000B3E49 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640040F83B3EA000B3E49 /* OpenAL.framework */; };
 		DCCBF1B70F6022AE0040855A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */; };
@@ -316,6 +323,20 @@
 		D95F2A6F1232D04800B90FFC /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
 		D95F2A701232D04800B90FFC /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		D95F2A711232D04800B90FFC /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		D95F2B551232D30800B90FFC /* GDataHTTPFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataHTTPFetcher.h; sourceTree = "<group>"; };
+		D95F2B561232D30800B90FFC /* GDataHTTPFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataHTTPFetcher.m; sourceTree = "<group>"; };
+		D95F2B621232D31900B90FFC /* GDataDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataDefines.h; sourceTree = "<group>"; };
+		D95F2B6D1232D36600B90FFC /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
+		D95F2B6E1232D36600B90FFC /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataXMLNode.m; sourceTree = "<group>"; };
+		D95F2B7B1232D39C00B90FFC /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		D95F2B991232D41A00B90FFC /* GDataHTTPFetcherLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataHTTPFetcherLogging.h; sourceTree = "<group>"; };
+		D95F2B9A1232D41A00B90FFC /* GDataHTTPFetcherLogging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataHTTPFetcherLogging.m; sourceTree = "<group>"; };
+		D95F2BA11232D42E00B90FFC /* GDataMIMEDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataMIMEDocument.h; sourceTree = "<group>"; };
+		D95F2BA21232D42E00B90FFC /* GDataMIMEDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataMIMEDocument.m; sourceTree = "<group>"; };
+		D95F2BA31232D42E00B90FFC /* GDataProgressMonitorInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataProgressMonitorInputStream.h; sourceTree = "<group>"; };
+		D95F2BA41232D42E00B90FFC /* GDataProgressMonitorInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataProgressMonitorInputStream.m; sourceTree = "<group>"; };
+		D95F2BAC1232D43A00B90FFC /* GDataGatherInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataGatherInputStream.h; sourceTree = "<group>"; };
+		D95F2BAD1232D43A00B90FFC /* GDataGatherInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataGatherInputStream.m; sourceTree = "<group>"; };
 		DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DC6640040F83B3EA000B3E49 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -499,6 +520,7 @@
 				506EDB88102F4C4000A389B3 /* libz.dylib in Frameworks */,
 				506EDBA5102F4C9F00A389B3 /* AVFoundation.framework in Frameworks */,
 				506EE1A91030508200A389B3 /* libcocos2d libraries.a in Frameworks */,
+				D95F2B7C1232D39C00B90FFC /* libxml2.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,6 +561,7 @@
 				50F414EB1069373D002A0D5E /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				D95F2B7B1232D39C00B90FFC /* libxml2.dylib */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -571,6 +594,19 @@
 		2D500B1D0D5A766B00DBA0E3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				D95F2BAC1232D43A00B90FFC /* GDataGatherInputStream.h */,
+				D95F2BAD1232D43A00B90FFC /* GDataGatherInputStream.m */,
+				D95F2BA11232D42E00B90FFC /* GDataMIMEDocument.h */,
+				D95F2BA21232D42E00B90FFC /* GDataMIMEDocument.m */,
+				D95F2BA31232D42E00B90FFC /* GDataProgressMonitorInputStream.h */,
+				D95F2BA41232D42E00B90FFC /* GDataProgressMonitorInputStream.m */,
+				D95F2B991232D41A00B90FFC /* GDataHTTPFetcherLogging.h */,
+				D95F2B9A1232D41A00B90FFC /* GDataHTTPFetcherLogging.m */,
+				D95F2B6D1232D36600B90FFC /* GDataXMLNode.h */,
+				D95F2B6E1232D36600B90FFC /* GDataXMLNode.m */,
+				D95F2B551232D30800B90FFC /* GDataHTTPFetcher.h */,
+				D95F2B621232D31900B90FFC /* GDataDefines.h */,
+				D95F2B561232D30800B90FFC /* GDataHTTPFetcher.m */,
 				D95F2A631232D03F00B90FFC /* JSON */,
 				E0F80F5D120A0182005866B8 /* GameConfig.h */,
 				506EDC2F102F528A00A389B3 /* HelloWorldScene.h */,
@@ -1101,6 +1137,12 @@
 				D95F2A741232D04800B90FFC /* SBJsonBase.m in Sources */,
 				D95F2A751232D04800B90FFC /* SBJsonParser.m in Sources */,
 				D95F2A761232D04800B90FFC /* SBJsonWriter.m in Sources */,
+				D95F2B571232D30800B90FFC /* GDataHTTPFetcher.m in Sources */,
+				D95F2B6F1232D36600B90FFC /* GDataXMLNode.m in Sources */,
+				D95F2B9B1232D41A00B90FFC /* GDataHTTPFetcherLogging.m in Sources */,
+				D95F2BA51232D42E00B90FFC /* GDataMIMEDocument.m in Sources */,
+				D95F2BA61232D42E00B90FFC /* GDataProgressMonitorInputStream.m in Sources */,
+				D95F2BAE1232D43A00B90FFC /* GDataGatherInputStream.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1304,6 +1346,7 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/include/libxml2/;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
