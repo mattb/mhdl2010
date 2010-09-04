@@ -17,8 +17,14 @@
 	startColor.g = ((float)arc4random()) / RAND_MAX / 3;
 	startColor.b = ((float)arc4random()) / RAND_MAX / 3;
 	startSize = 10.0 + (arc4random() % 30);
+	[self runAction:[CCRepeatForever actionWithAction:
+					 [CCSequence actions: 
+					   [CCScaleTo actionWithDuration:0.5f-0.01f scale:1.5f], 
+					   [CCScaleTo actionWithDuration:0.01f scale:1.0f],
+					   nil]]];
 	return t;
 }
+
 @end
 
 // HelloWorld implementation
