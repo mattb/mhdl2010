@@ -9,6 +9,18 @@
 // Import the interfaces
 #import "HelloWorldScene.h"
 
+@implementation Track
+-(id) init
+{
+	id t = [self initWithTotalParticles:20];
+	startColor.r = ((float)arc4random()) / RAND_MAX / 3;
+	startColor.g = ((float)arc4random()) / RAND_MAX / 3;
+	startColor.b = ((float)arc4random()) / RAND_MAX / 3;
+	startSize = 10.0 + (arc4random() % 30);
+	return t;
+}
+@end
+
 // HelloWorld implementation
 @implementation HelloWorld
 
@@ -35,15 +47,18 @@
 	if( (self=[super init] )) {
 		self.isTouchEnabled = YES;
 		
+		// ask director the the window size
+		CGSize size = [[CCDirector sharedDirector] winSize];
+		
 		emitters = [[NSMutableArray arrayWithCapacity:0] retain];
 		activeEmitters = [[NSMutableArray arrayWithCapacity:10] retain];
 		
 		for(int i = 0; i<100; i++) {
-			[emitters addObject:[[CCParticleFireworks node] retain]];
+			[emitters addObject:[[Track node] retain]];
 		}
 
 		for(CCParticleSystem *emitter in emitters) {
-			[emitter stopSystem];
+			emitter.position = CGPointMake(arc4random() % (int)size.width, arc4random() % (int)size.height);
 			[self addChild: emitter];
 		}
 	}
@@ -60,7 +75,6 @@
 		[activeEmitters addObject:emitter];
 		emitter.position = location;
 	}
-	NSLog(@"Active emitters: %d", [activeEmitters count]);
 }
 
 - (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -76,9 +90,6 @@
 }
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-	for(CCParticleSystem *emitter in activeEmitters) {
-		[emitter stopSystem];
-	}
 	[activeEmitters removeAllObjects];
 }
 

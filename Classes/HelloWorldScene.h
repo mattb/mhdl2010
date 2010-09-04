@@ -22,3 +22,8 @@
 -(CCParticleSystem *)nearestEmitterTo:(CGPoint)location from:(NSArray *)collection;
 
 @end
+
+@interface Track : CCParticleSun
+{
+}
+@end
