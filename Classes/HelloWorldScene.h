@@ -17,6 +17,8 @@
 {
 	NSMutableArray	*emitters;
 	NSMutableArray *activeEmitters;
+	NSDictionary *tracks;
+	NSNumber *idx;
 }
 
 // returns a Scene that contains the HelloWorld as the only child
@@ -27,5 +29,7 @@
 
 @interface Track : CCParticleSun
 {
+	CCLabelTTF *label;
 }
+@property (nonatomic, retain) CCLabelTTF *label;
 @end

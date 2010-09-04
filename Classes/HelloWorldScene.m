@@ -25,7 +25,7 @@
 					   nil]]];
 	return t;
 }
-
+@synthesize label;
 @end
 
 // HelloWorld implementation
@@ -53,10 +53,8 @@
 	// Apple recommends to re-assign "self" with the "super" return value
 	if( (self=[super init] )) {
 		self.isTouchEnabled = YES;
-		
-		// ask director the the window size
-		CGSize size = [[CCDirector sharedDirector] winSize];
-		
+		idx = [NSNumber numberWithInt:0];
+				
 		emitters = [[NSMutableArray arrayWithCapacity:0] retain];
 		activeEmitters = [[NSMutableArray arrayWithCapacity:10] retain];
 		
@@ -72,13 +70,23 @@
 - (void)myFetcher:(GDataHTTPFetcher *)fetcher finishedWithData:(NSData *)data {
 	NSLog(@"Data!");
     NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSDictionary *tracks = [json JSONValue];
+	tracks = [[json JSONValue] retain];
 	NSArray *characs = [tracks objectForKey:@"characteristics"];
-	for(NSArray *charac in characs) {
+	NSArray *echoes = [tracks objectForKey:@"echo"];
+	for(int i = 0; i<[characs count]; i++) {
+		NSArray *charac = [characs objectAtIndex:i];
+		NSDictionary *echo = [echoes objectAtIndex:i];
 		Track *t = [[Track node] retain];
 		t.position = CGPointMake(4 * [[charac objectAtIndex:1] floatValue], 2 * [[charac objectAtIndex:4] floatValue]);
+
+		NSString *title = [echo objectForKey:@"title"];
+		NSLog(@"%@", title);
+		CCLabelTTF *label = [CCLabelTTF labelWithString:title fontName:@"Helvetica" fontSize:16];
+		label.position = CGPointMake(4 * [[charac objectAtIndex:1] floatValue], 2 * [[charac objectAtIndex:4] floatValue]);
 		[emitters addObject:t];
 		[self addChild:t];
+		[self addChild:label];
+		t.label = label;
 	}
 }
 
@@ -87,7 +95,7 @@
 }
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-	for(UITouch *touch in touches) {
+/*	for(UITouch *touch in touches) {
 		CGPoint location = [[CCDirector sharedDirector] 
 						convertToGL: [touch locationInView:touch.view]];
 	
@@ -95,11 +103,11 @@
 		[emitter resetSystem];
 		[activeEmitters addObject:emitter];
 		emitter.position = location;
-	}
+	}*/
 }
 
 - (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-	if([activeEmitters count] > 0) {
+/*	if([activeEmitters count] > 0) {
 		for(UITouch *touch in touches) {
 			CGPoint location = [[CCDirector sharedDirector] 
 								convertToGL: [touch locationInView:touch.view]];
@@ -107,11 +115,30 @@
 			CCParticleSystem *emitter = [self nearestEmitterTo:location from:activeEmitters];
 			emitter.position = location;
 		}
-	}
+	}*/
 }
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-	[activeEmitters removeAllObjects];
+	//[activeEmitters removeAllObjects];
+
+	// ask director the the window size
+	CGSize size = [[CCDirector sharedDirector] winSize];
+
+	NSLog(@"%d", [idx intValue]);
+	idx = [NSNumber numberWithInt:(([idx intValue] + 2) % 5)];
+	
+	NSArray *icas = [tracks objectForKey:@"ica"];
+	for(int i = 0 ; i < [emitters count]; i++) {
+		NSArray *ica = [icas objectAtIndex:i];
+		Track *emitter = [emitters objectAtIndex:i];
+		float x = ([[ica objectAtIndex:[idx intValue]] floatValue] + 2)/4;
+		float y = ([[ica objectAtIndex:1+[idx intValue]] floatValue] +2)/4;
+		CCAction *move_e = [CCMoveTo actionWithDuration:10 position:CGPointMake(size.width * x, size.height * y)];
+		CCAction *move_l = [CCMoveTo actionWithDuration:10 position:CGPointMake(size.width * x, size.height * y)];
+
+		[emitter runAction:move_e];
+		[emitter.label runAction:move_l];
+	}
 }
 
 - (CCParticleSystem *)nearestEmitterTo:(CGPoint)location from:(NSArray *)collection {
