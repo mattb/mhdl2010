@@ -60,16 +60,30 @@
 		emitters = [[NSMutableArray arrayWithCapacity:0] retain];
 		activeEmitters = [[NSMutableArray arrayWithCapacity:10] retain];
 		
-		for(int i = 0; i<100; i++) {
-			[emitters addObject:[[Track node] retain]];
-		}
-
-		for(CCParticleSystem *emitter in emitters) {
-			emitter.position = CGPointMake(arc4random() % (int)size.width, arc4random() % (int)size.height);
-			[self addChild: emitter];
-		}
+		NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://test.hackdiary.com/"]];
+		GDataHTTPFetcher* myFetcher = [GDataHTTPFetcher httpFetcherWithRequest:request];
+		[myFetcher beginFetchWithDelegate:self
+						didFinishSelector:@selector(myFetcher:finishedWithData:)
+						  didFailSelector:@selector(myFetcher:failedWithError:)];
 	}
 	return self;
+}
+
+- (void)myFetcher:(GDataHTTPFetcher *)fetcher finishedWithData:(NSData *)data {
+	NSLog(@"Data!");
+    NSString *json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSDictionary *tracks = [json JSONValue];
+	NSArray *characs = [tracks objectForKey:@"characteristics"];
+	for(NSArray *charac in characs) {
+		Track *t = [[Track node] retain];
+		t.position = CGPointMake(4 * [[charac objectAtIndex:1] floatValue], 2 * [[charac objectAtIndex:4] floatValue]);
+		[emitters addObject:t];
+		[self addChild:t];
+	}
+}
+
+- (void)myFetcher:(GDataHTTPFetcher *)fetcher failedWithError:(NSError *)error {
+	NSLog(@"ERROR: %@", error);
 }
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {

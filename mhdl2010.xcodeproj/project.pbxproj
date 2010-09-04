@@ -594,19 +594,7 @@
 		2D500B1D0D5A766B00DBA0E3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				D95F2BAC1232D43A00B90FFC /* GDataGatherInputStream.h */,
-				D95F2BAD1232D43A00B90FFC /* GDataGatherInputStream.m */,
-				D95F2BA11232D42E00B90FFC /* GDataMIMEDocument.h */,
-				D95F2BA21232D42E00B90FFC /* GDataMIMEDocument.m */,
-				D95F2BA31232D42E00B90FFC /* GDataProgressMonitorInputStream.h */,
-				D95F2BA41232D42E00B90FFC /* GDataProgressMonitorInputStream.m */,
-				D95F2B991232D41A00B90FFC /* GDataHTTPFetcherLogging.h */,
-				D95F2B9A1232D41A00B90FFC /* GDataHTTPFetcherLogging.m */,
-				D95F2B6D1232D36600B90FFC /* GDataXMLNode.h */,
-				D95F2B6E1232D36600B90FFC /* GDataXMLNode.m */,
-				D95F2B551232D30800B90FFC /* GDataHTTPFetcher.h */,
-				D95F2B621232D31900B90FFC /* GDataDefines.h */,
-				D95F2B561232D30800B90FFC /* GDataHTTPFetcher.m */,
+				D95F2BC11232D4DE00B90FFC /* GData */,
 				D95F2A631232D03F00B90FFC /* JSON */,
 				E0F80F5D120A0182005866B8 /* GameConfig.h */,
 				506EDC2F102F528A00A389B3 /* HelloWorldScene.h */,
@@ -748,6 +736,26 @@
 				D95F2A711232D04800B90FFC /* SBJsonWriter.m */,
 			);
 			name = JSON;
+			sourceTree = "<group>";
+		};
+		D95F2BC11232D4DE00B90FFC /* GData */ = {
+			isa = PBXGroup;
+			children = (
+				D95F2BAC1232D43A00B90FFC /* GDataGatherInputStream.h */,
+				D95F2BAD1232D43A00B90FFC /* GDataGatherInputStream.m */,
+				D95F2BA11232D42E00B90FFC /* GDataMIMEDocument.h */,
+				D95F2BA21232D42E00B90FFC /* GDataMIMEDocument.m */,
+				D95F2BA31232D42E00B90FFC /* GDataProgressMonitorInputStream.h */,
+				D95F2BA41232D42E00B90FFC /* GDataProgressMonitorInputStream.m */,
+				D95F2B991232D41A00B90FFC /* GDataHTTPFetcherLogging.h */,
+				D95F2B9A1232D41A00B90FFC /* GDataHTTPFetcherLogging.m */,
+				D95F2B6D1232D36600B90FFC /* GDataXMLNode.h */,
+				D95F2B6E1232D36600B90FFC /* GDataXMLNode.m */,
+				D95F2B551232D30800B90FFC /* GDataHTTPFetcher.h */,
+				D95F2B621232D31900B90FFC /* GDataDefines.h */,
+				D95F2B561232D30800B90FFC /* GDataHTTPFetcher.m */,
+			);
+			name = GData;
 			sourceTree = "<group>";
 		};
 		E0504E6C122D44A2005B74CB /* cocos2d */ = {
